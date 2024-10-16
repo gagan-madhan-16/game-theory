@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import GroundCard from '../components/GroundCard';
 import ImageSlider from '../components/ImageSlider';
 import '../custom.css';
@@ -123,16 +123,15 @@ const Landing = () => {
 
             <br />
             <div style={{float: "right"}} id='city'>
-                <label style={{color:"black",paddingRight:"20px"}} > City :-  </label>
-                <input type="text" name="city" id="city" list="city-list" style={{border: "2px solid black",marginRight:"50px"}} onChange={(e)=> {
-                    setCity(e.target.value)
-                }}/>
-                <datalist id="city-list">
-                    <option value="Prayagraj"/>
-                    <option value="Mumbai"/>
-                    <option value="Bangalore"/>
-                </datalist>
+                <label style={{color:"black",paddingRight:"20px"}} > City: </label>
+                <select style={{border: "2px solid black", marginRight:"50px"}} onChange={(e) => setCity(e.target.value)}>
+                    <option value="">All Cities</option>
+                    <option value="Prayagraj">Prayagraj</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                </select>
             </div>
+
             <div id="groundContainer" className="flex mx-4 sm:mx-16 my-8 overflow-x-auto justify-between relative">
                 <div className="flex justify-between my-5" style={{ transform: `translateX(-${scrollPosition}px)`, transition: 'transform 0.3s' }}>
                 {grounds.map((ground) => {
@@ -150,7 +149,6 @@ const Landing = () => {
                         );
                     }
                 })}
-
                 </div>
             </div>
         </div>
