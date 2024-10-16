@@ -112,12 +112,16 @@ const Landing = () => {
         <div className="relative">
             <ImageSlider />
 
-            <div className="flex w-full absolute z-10 justify-between mt-40">
-                <button onClick={() => handleScroll('left')} className="text-white m-1 rounded-full">
-                    <img className='w-10' src="/images/la.svg" alt="left arrow" />
+            <div className="flex w-full absolute z-10 justify-between mt-[228px] pr-5 pl-5">
+                <button onClick={() => handleScroll('left')} className="text-black m-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                    </svg>
                 </button>
-                <button onClick={() => handleScroll('right')} className="text-white m-1 rounded-full">
-                    <img className='w-10' src="/images/ra.svg" alt="right arrow" />
+                <button onClick={() => handleScroll('right')} className="text-black m-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                    </svg>
                 </button>
             </div>
 
