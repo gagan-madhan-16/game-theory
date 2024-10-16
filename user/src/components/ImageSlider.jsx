@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 const ImageSlider = () => {
     const images = [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6'
+        'https://res.cloudinary.com/dvv1qhibw/image/upload/f_auto,q_auto/v1/gdsc/game%20theory/gkl4fwtgcrczm5nbegny',
+        'https://res.cloudinary.com/dvv1qhibw/image/upload/f_auto,q_auto/v1/gdsc/game%20theory/epcd0vcsfdd7uddnchcj',
+        'https://res.cloudinary.com/dvv1qhibw/image/upload/f_auto,q_auto/v1/gdsc/game%20theory/ckfp1eacoxu479kw28gw',
+        'https://res.cloudinary.com/dvv1qhibw/image/upload/f_auto,q_auto/v1/gdsc/game%20theory/xgvizuixnlbztvijclqe',
+        'https://res.cloudinary.com/dvv1qhibw/image/upload/f_auto,q_auto/v1/gdsc/game%20theory/dslt7ddwnq4wyummnaof',
+        'https://res.cloudinary.com/dvv1qhibw/image/upload/f_auto,q_auto/v1/gdsc/game%20theory/ow21wz8gyaguh4jolgva'
     ];
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -38,7 +38,7 @@ const ImageSlider = () => {
             {images.map((image, index) => (
                 <img
                     key={index}
-                    src={`../src/images/${image}.jpg`}
+                    src={image}
                     alt={`Image ${index + 1}`}
                     className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
                 />
