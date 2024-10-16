@@ -9,7 +9,8 @@ const GroundDetails = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedTimeSlot, setSelectedTimeSlot] = useState('');
-    const [amenities, setAmenities] = useState(['Parking', 'Washroom']); 
+    const [amenities, setAmenities] = useState(['Parking', 'Washroom']);
+    const [name,setName] = useState('') ;
 
     const mockGround = {
         ground_name: 'Football Ground',
@@ -20,7 +21,10 @@ const GroundDetails = () => {
             'https://en.reformsports.com/oxegrebi/2020/09/mini-futbol-sahasi-ozellikleri-ve-olculeri.jpg',
             'https://olympiados.in/wp-content/uploads/2024/01/Football-Pitch-Olympiados-768x432.webp'
         ],
-        availableSlots: ['10:00 AM - 12:00 PM', '02:00 PM - 04:00 PM'],
+        availableSlots: [
+            { time: '10:00 AM - 12:00 PM', openings: 3 },
+            { time: '02:00 PM - 04:00 PM', openings: 2 }
+        ],
     };
 
     const openImageViewer = (index) => {
@@ -35,11 +39,11 @@ const GroundDetails = () => {
 
     const bookGround = (e) => {
         e.preventDefault();
-        if (!selectedDate || !selectedTimeSlot) {
-            toast.error("Please select a date and time slot.");
+        if (!selectedDate || !selectedTimeSlot || !name) {
+            toast.error("Please fill all the fields");
             return;
         }
-        toast.success("Ground booked successfully!");
+        toast.success("Ground booked successfully for Mr." + name);
         navigate('/bookings');
     };
 
@@ -50,6 +54,10 @@ const GroundDetails = () => {
 
     const handleTimeSlotChange = (event) => {
         setSelectedTimeSlot(event.target.value);
+    };
+
+    const handleNameChange = (event) => {
+        setName(event.target.value);
     };
 
     return (
@@ -89,6 +97,13 @@ const GroundDetails = () => {
                     </div>
                     <form onSubmit={bookGround} className='bg-gray-100 flex flex-col border border-gray-300 p-6 rounded-lg justify-center mb-4 shadow-md'>
                         <div className="mb-4">
+                            <label className="block text-gray-700 mb-2">Name of the Client:</label>
+                            <input
+                                type="text"
+                                onChange={handleNameChange}
+                                className='rounded p-2 border border-gray-300 w-full'
+                                placeholder='Jhon Doe'
+                            />
                             <label className="block text-gray-700 mb-2">Select Date:</label>
                             <input
                                 type="date"
@@ -105,18 +120,20 @@ const GroundDetails = () => {
                                 className="w-full border border-gray-300 rounded p-2"
                             >
                                 <option value="">Select a Time Slot</option>
-                                {mockGround.availableSlots.map((time, index) => (
-                                    <option key={index} value={time}>{time}</option>
+                                {mockGround.availableSlots.map((slot, index) => (
+                                    <option key={index} value={slot.time}>
+                                        {slot.time} ({slot.openings} openings)
+                                    </option>
                                 ))}
                             </select>
                         </div>
+                        <span className='font-semibold'>@ ₹{mockGround.price}/hour</span>
                         <button
                             type='submit'
                             className='bg-gray-900 text-white lg:w-32 px-4 py-2 rounded-lg mb-2'
                         >
                             Book
                         </button>
-                        <span className='font-semibold'>@ ₹{mockGround.price}/hour</span>
                     </form>
                 </div>
             </div>
